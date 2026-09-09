@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林鑫 - 个人简历</title>
+<style>
+  :root {
+    --navy-1: #0f2a4a;
+    --navy-2: #163a63;
+    --accent: #38bdf8;
+    --accent-soft: #7dd3fc;
+    --ink: #1e293b;
+    --ink-sub: #475569;
+    --muted: #94a3b8;
+    --line: #e2e8f0;
+    --paper: #ffffff;
+    --wash: #f8fafc;
+    --chip-bg: rgba(56, 189, 248, .14);
+    --warn: #d97706;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+    background: #dbe3ee;
+    background-image: radial-gradient(circle at 15% 20%, #e8eef7 0%, transparent 45%),
+                      radial-gradient(circle at 85% 85%, #e3e9f3 0%, transparent 40%);
+    color: var(--ink);
+    line-height: 1.75;
+    padding: 40px 18px;
+  }
+
+  .resume {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    background: var(--paper);
+    border-radius: 20px;
+    box-shadow: 0 24px 70px rgba(15, 42, 74, .22), 0 4px 14px rgba(15,42,74,.08);
+    overflow: hidden;
+  }
+
+  /* ============ 左侧深蓝侧边栏 ============ */
+  .side {
+    background: linear-gradient(165deg, var(--navy-1) 0%, var(--navy-2) 55%, #1d4a7a 100%);
+    color: #e2ecf7;
+    padding: 44px 30px 38px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* 装饰圆环 */
+  .side::before, .side::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid rgba(125, 211, 252, .18);
+  }
+  .side::before { width: 260px; height: 260px; top: -90px; right: -110px; }
+  .side::after  { width: 180px; height: 180px; bottom: -60px; left: -70px; border-width: 1px; }
+
+  .avatar-wrap {
+    display: flex; justify-content: center;
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+  .avatar {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(125,211,252,.25), rgba(255,255,255,.06));
+    border: 2.5px solid rgba(125,211,252,.6);
+    box-shadow: 0 0 0 7px rgba(125,211,252,.1), 0 10px 30px rgba(0,0,0,.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 46px; font-weight: 700; color: #fff;
+    letter-spacing: 2px;
+  }
+
+  .side h3 {
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--accent-soft);
+    margin: 26px 0 14px;
+    display: flex; align-items: center; gap: 10px;
+    position: relative; z-index: 1;
+  }
+  .side h3::before { content: "◈"; font-size: 12px; }
+  .side h3::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(90deg, rgba(125,211,252,.45), transparent);
+  }
+
+  .contact-list { list-style: none; font-size: 13px; position: relative; z-index: 1; }
+  .contact-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 10px;
+    word-break: break-all;
+  }
+  .contact-list .ico {
+    width: 26px; height: 26px; flex-shrink: 0;
+    border-radius: 8px;
+    background: rgba(125,211,252,.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+  }
+
+  .skill { margin-bottom: 13px; position: relative; z-index: 1; }
+  .skill-meta {
+    display: flex; justify-content: space-between;
+    font-size: 12.5px; margin-bottom: 5px; color: #dbeafe;
+  }
+  .skill-meta .lv { color: var(--accent-soft); font-size: 11.5px; }
+  .bar {
+    height: 6px;
+    background: rgba(255,255,255,.12);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .bar i {
+    display: block; height: 100%; width: var(--w);
+    background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(56,189,248,.6);
+  }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; position: relative; z-index: 1; }
+  .chip {
+    font-size: 11.5px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    background: var(--chip-bg);
+    color: #bae6fd;
+    border: 1px solid rgba(125,211,252,.25);
+  }
+
+  .side ul.plain { list-style: none; font-size: 13px; position: relative; z-index: 1; }
+  .side ul.plain li { margin-bottom: 7px; padding-left: 16px; position: relative; }
+  .side ul.plain li::before {
+    content: "▸"; position: absolute; left: 0; color: var(--accent-soft);
+  }
+
+  .warn { color: #fbbf24; }
+
+  /* ============ 右侧主内容 ============ */
+  .main { padding: 46px 46px 42px; }
+
+  .hero { margin-bottom: 30px; }
+  .hero .name {
+    font-size: 36px; font-weight: 800; letter-spacing: 6px;
+    color: var(--navy-1);
+    line-height: 1.2;
+  }
+  .hero .name em {
+    font-style: normal; font-size: 14px; letter-spacing: 3px;
+    color: var(--muted); font-weight: 400;
+    margin-left: 12px;
+    vertical-align: 6px;
+  }
+  .hero .intent {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 10px;
+    font-size: 14px; font-weight: 600;
+    color: var(--navy-2);
+    background: linear-gradient(90deg, rgba(56,189,248,.12), rgba(56,189,248,.03));
+    border-left: 3px solid var(--accent);
+    padding: 6px 16px;
+    border-radius: 0 8px 8px 0;
+  }
+  .hero-rule {
+    margin-top: 22px;
+    height: 3px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent-soft) 35%, var(--line) 100%);
+  }
+
+  section { margin-bottom: 32px; }
+  section:last-child { margin-bottom: 0; }
+
+  .sec-title {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 18px;
+  }
+  .sec-title .badge {
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, var(--navy-1), var(--navy-2));
+    color: var(--accent-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(15,42,74,.25);
+  }
+  .sec-title h2 {
+    font-size: 19px; letter-spacing: 3px; color: var(--navy-1);
+  }
+  .sec-title .en {
+    font-size: 11px; color: var(--muted); letter-spacing: 2px;
+    text-transform: uppercase; margin-top: 2px;
+  }
+
+  /* 时间轴 */
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before {
+    content: "";
+    position: absolute; left: 5px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--line) 90%);
+    border-radius: 1px;
+  }
+  .t-item { position: relative; padding-bottom: 22px; }
+  .t-item:last-child { padding-bottom: 0; }
+  .t-item::before {
+    content: "";
+    position: absolute; left: -24px; top: 8px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 0 3px rgba(56,189,248,.15);
+  }
+  .t-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 4px;
+  }
+  .t-head strong { font-size: 15.5px; color: var(--ink); }
+  .t-time {
+    font-size: 12px; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #0ea5e9);
+    padding: 2px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .t-role {
+    font-size: 12.5px; color: var(--ink-sub);
+    margin: 3px 0 8px;
+  }
+  .t-role b { color: var(--navy-2); }
+  .t-item ul { padding-left: 18px; font-size: 13.5px; color: #334155; }
+  .t-item li { margin-bottom: 5px; }
+  .t-item li::marker { color: var(--accent); }
+
+  .hl { color: var(--navy-2); font-weight: 600; }
+
+  /* 能力卡片行 */
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 14px; margin-top: 4px;
+  }
+  .stat {
+    background: var(--wash);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px 14px;
+    text-align: center;
+    transition: .2s;
+  }
+  .stat .num {
+    font-size: 24px; font-weight: 800; color: var(--navy-2);
+    font-family: Georgia, serif;
+  }
+  .stat .num small { font-size: 13px; color: var(--accent); font-weight: 700; }
+  .stat .lbl { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* 自我评价 */
+  .eval {
+    background: linear-gradient(135deg, #f0f9ff, #f8fafc);
+    border: 1px solid #bae6fd;
+    border-radius: 14px;
+    padding: 16px 20px;
+    font-size: 13.5px; color: #334155;
+  }
+  .eval b { color: var(--navy-2); }
+
+  /* 打印 */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .resume { box-shadow: none; border-radius: 0; max-width: 100%; margin: 0; }
+  }
+  @media (max-width: 760px) {
+    .resume { grid-template-columns: 1fr; }
+    .main { padding: 32px 24px; }
+    .stat-row { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="resume">
+
+  <!-- ============ 侧边栏 ============ -->
+  <aside class="side">
+
+    <div class="avatar-wrap"><div class="avatar">林鑫</div></div>
+
+    <h3>联系方式</h3>
+    <ul class="contact-list">
+      <li><span class="ico">📞</span><span class="warn">138-XXXX-XXXX</span></li>
+      <li><span class="ico">✉️</span><span class="warn">your-email@example.com</span></li>
+      <li><span class="ico">📍</span><span class="warn">所在城市</span></li>
+      <li><span class="ico">💻</span><span>github.com/yourname</span></li>
+    </ul>
+
+    <h3>专业技能</h3>
+    <div class="skill">
+      <div class="skill-meta"><span>Vue.js 前端开发</span><span class="lv">熟悉</span></div>
+      <div class="bar"><i style="--w:78%"></i></div>
+    </div>
+    <div class="skill">
+      <div class="skill-meta"><span>MQTT / IoT 通信</span><span class="lv">熟悉</span></div>
+      <div class="bar"><i style="--w:72%"></i></div>
+    </div>
+    <div class="skill">
+      <div class="skill-meta"><span>ESP32 固件开发</span><span class="lv">掌握</span></div>
+      <div class="bar"><i style="--w:66%"></i></div>
+    </div>
+    <div class="skill">
+      <div class="skill-meta"><span>C 语言基础</span><span class="lv">掌握</span></div>
+      <div class="bar"><i style="--w:62%"></i></div>
+    </div>
+    <div class="skill">
+      <div class="skill-meta"><span>Python / Flask</span><span class="lv">进阶中</span></div>
+      <div class="bar"><i style="--w:50%"></i></div>
+    </div>
+
+    <h3>技术标签</h3>
+    <div class="chips">
+      <span class="chip">ESP32</span><span class="chip">Vue.js</span>
+      <span class="chip">MQTT</span><span class="chip">EMQX Cloud</span>
+      <span class="chip">Flask</span><span class="chip">Python</span>
+      <span class="chip">GPIO</span><span class="chip">WSS/TLS</span>
+    </div>
+
+    <h3>证书奖项</h3>
+    <ul class="plain">
+      <li>全国计算机等级证书<span class="warn">（X 级）</span></li>
+    </ul>
+
+    <h3>兴趣爱好</h3>
+    <ul class="plain">
+      <li>游戏电竞 · 注重团队配合</li>
+      <li>运动健身 · 篮球 / 跑步</li>
+    </ul>
+
+  </aside>
+
+  <!-- ============ 主内容 ============ -->
+  <main class="main">
+
+    <div class="hero">
+      <div class="name">林 鑫<em>LIN XIN</em></div>
+      <div class="intent">🎯 求职意向：嵌入式物联网开发 / 前端开发（实习）</div>
+      <div class="hero-rule"></div>
+    </div>
+
+    <section>
+      <div class="sec-title">
+        <div class="badge">🎓</div>
+        <div><h2>教育背景</h2><div class="en">Education</div></div>
+      </div>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-head">
+            <strong class="warn">XX 学校 · 专业名称</strong>
+            <span class="t-time">20XX.09 – 至今</span>
+          </div>
+          <div class="t-role"><b>大专 在读</b></div>
+          <ul>
+            <li class="warn">主修课程：C语言程序设计、数据结构、电路基础……（按实际情况填写）</li>
+            <li class="warn">成绩 / 排名 / 奖学金 / 竞赛获奖（如有写在这里）</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-title">
+        <div class="badge">🚀</div>
+        <div><h2>项目经历</h2><div class="en">Projects</div></div>
+      </div>
+      <div class="timeline">
+
+        <div class="t-item">
+          <div class="t-head">
+            <strong>基于 ESP32 + Vue.js 的网页控制 LED 物联网系统</strong>
+            <span class="t-time">2026</span>
+          </div>
+          <div class="t-role"><b>个人项目 · 独立完成</b>（硬件 + 通信 + 前端全链路）</div>
+          <ul>
+            <li>使用 <span class="hl">Vue.js</span> 搭建控制页面，通过 <span class="hl">MQTT 协议</span>远程控制 ESP32 开发板上的 LED（GPIO2）开关；</li>
+            <li>接入 <span class="hl">EMQX Cloud</span> 云端 MQTT 服务，采用 WSS 加密连接，实现浏览器—云端—设备三方实时通信；</li>
+            <li>独立完成 ESP32 固件开发，实现主题订阅、消息解析与 GPIO 可靠控制；</li>
+            <li>主动将方案由 WebSocket 迁移至 <span class="hl">MQTT over TLS</span>，深入理解物联网通信协议的选型与安全机制。</li>
+          </ul>
+        </div>
+
+        <div class="t-item">
+          <div class="t-head">
+            <strong>Flask Web 开发课程作业（6 个小项目）</strong>
+            <span class="t-time">2026</span>
+          </div>
+          <div class="t-role"><b>课程练习 · Python Web 入门</b></div>
+          <ul>
+            <li>使用 <span class="hl">Flask</span> 框架独立完成路由设计、URL 参数处理、模板渲染等 6 个递进式练习项目；</li>
+            <li>掌握 <span class="hl">venv 虚拟环境</span>管理依赖的标准开发流程，养成增量式开发与逐步验证的习惯。</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-title">
+        <div class="badge">📊</div>
+        <div><h2>关键数字</h2><div class="en">Highlights</div></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="num">2<small>+</small></div><div class="lbl">完整项目经验</div></div>
+        <div class="stat"><div class="num">3<small>层</small></div><div class="lbl">硬件-通信-前端全栈</div></div>
+        <div class="stat"><div class="num">6<small>个</small></div><div class="lbl">Flask 练习项目</div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-title">
+        <div class="badge">💡</div>
+        <div><h2>自我评价</h2><div class="en">Self Evaluation</div></div>
+      </div>
+      <div class="eval">
+        对<b>嵌入式与物联网开发</b>有浓厚兴趣，动手能力强，能独立完成"硬件—通信—前端"全链路小项目；
+        学习风格小步快跑、<b>一个特性一个特性地啃透</b>，遇到问题先自行排查再高效求助；
+        正在系统学习 Python Web 开发，期望在实习与实践中把技能真正落地。
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
