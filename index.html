@@ -280,6 +280,24 @@
     .stat-row { grid-template-columns: repeat(3, 1fr); }
   }
 </style>
+
+<!-- 链入式引入 css：样式住在独立的 s1.css 文件里，这行负责把它接进来 -->
+<link href="./s1.css" rel="stylesheet">
+
+<!-- 内嵌式引入 javascript：脚本直接写在本页 -->
+<script>
+  console.log("内嵌式引入 javascript");
+  let i = 0;
+  const timer = setInterval(() => {
+    console.log("计时:", i);
+    i++;
+    if (i >= 5) { clearInterval(timer); }  // 数到 5 自动停，避免刷屏
+  }, 1000);
+</script>
+
+<!-- 外链式引入 javascript：脚本住在独立的 j1.js 文件里 -->
+<script src="./j1.js"></script>
+
 </head>
 <body>
 
@@ -432,6 +450,14 @@
 
   </main>
 </div>
+
+<!-- 行内式引入 javascript：onclick 直接写在标签上，点击弹窗 -->
+<p style="text-align:center; margin-top:16px;">
+  <input type="button" value="点我打招呼" onclick="alert('你好，我是林鑫！')">
+</p>
+
+<!-- 行内式引入 css：style 直接写在标签身上，只管这一个标签 -->
+<p class="link-demo">✨ 作业演示：CSS 三种引入方式（行内式 / 内嵌式 / 链入式）与 JavaScript 三种引入方式已全部用上</p>
 
 </body>
 </html>

@@ -1,0 +1,18 @@
+/* ============ 链入式引入 CSS ============
+   这个文件被 index.html 里的 <link href="./s1.css"> 接入
+   这里写的是"选择器 { 属性: 值; }"格式的完整 CSS 规则 */
+
+/* 所有 h2 标题：蓝色 + 左侧亮色竖条 */
+h2 {
+  color: #185FA5;
+  border-left: 4px solid #38bdf8;
+  padding-left: 8px;
+}
+
+/* 页面底部演示说明那一行 */
+.link-demo {
+  text-align: center;
+  color: #64748b;
+  font-size: 12px;
+  margin-top: 10px;
+}
